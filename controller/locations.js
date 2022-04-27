@@ -1,13 +1,16 @@
 const express = require('express')
 const router = express.Router()
 const locationData = require('../mock data/locations.json')
+const hobbyData = require("../mock data/hobbies.json")
 
 router.get('/', (req, res) => {
     res.status(200).json(locationData)
 })
 
 router.get('/:id', (req, res) => {
-    res.status(200).json(locationData[req.params.id])
+    var data = locationData[req.params.id]
+    data["hobby"] = hobbyData[data["hobby_id"]]
+    res.status(200).json(data)
 })
 
 router.post('/', (req, res) => {
