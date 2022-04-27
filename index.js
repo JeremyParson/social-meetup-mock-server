@@ -11,6 +11,8 @@ app.use(methodOverride('_method'))
 
 // CONTROLLERS
 app.use('/hobbies', require('./controller/hobby'))
+app.use('/events', require('./controller/events'))
+app.use('/locations', require('./controller/locations'))
 
 // ROOT
 app.get('/', (req, res) => {

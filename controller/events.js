@@ -1,28 +1,28 @@
 const express = require('express')
 const router = express.Router()
-const hobbyData = require('../mock data/hobbies.json')
+const eventData = require('../mock data/events.json')
 
 router.get('/', (req, res) => {
-    res.status(200).json(hobbyData)
+    res.status(200).json(eventData)
 })
 
 router.get('/:id', (req, res) => {
-    res.status(200).json(hobbyData[req.params.id])
+    res.status(200).json(eventData[req.params.id])
 })
 
 router.post('/', (req, res) => {
-    hobbyData[req.params.id] = req.body
+    eventData[req.body.id] = req.body
     res.status(200).json({status: 'ok'})
 })
 
 router.delete('/:id', (req, res) => {
-    delete hobbyData[req.params.id]
+    delete eventData[req.params.id]
     res.status(200).json({status: 'ok'})
 })
 
 router.put('/:id', (req, res) => {
-    hobbyData[req.params.id] = req.body
-    res.status(200).json(hobbyData)
+    eventData[req.params.id] = req.body
+    res.status(200).json(eventData)
 })
 
 module.exports = router
